@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ShopTuch — Premium Modern Fashion & Contemporary Atelier</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="ShopTuch is an international luxury clothing label crafting timeless silhouettes, organic cottons, Italian wools, and tailored contemporary wardrobe essentials." />
+  <meta name="keywords" content="ShopTuch, luxury clothing, designer fashion, wool coats, silk dresses, selvedge denim, sustainable luxury" />
+  <meta name="author" content="ShopTuch Atelier" />
+  
+  <!-- OpenGraph & Twitter Cards -->
+  <meta property="og:title" content="ShopTuch — Premium Modern Fashion & Contemporary Atelier" />
+  <meta property="og:description" content="Timeless silhouettes, sustainable organic fabrics, and master Italian craftsmanship." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/images/banners/hero-banner.svg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo/shoptuch-logo.svg" />
+
+  <!-- Google Fonts: Cormorant Garamond & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+  <link rel="stylesheet" href="assets/css/responsive.css" />
+</head>
+<body>
+
+  <!-- 1. TOP ANNOUNCEMENT BAR -->
+  <aside class="announcement-bar" aria-label="Special Offers">
+    <div class="announcement-bar-container">
+      <div class="announcement-text">
+        <span class="announcement-icon">🎁</span>
+        <span>Free Shipping on Orders Over $75</span>
+        <span class="announcement-bullet">•</span>
+        <span>Use Code: <strong class="announcement-highlight">WELCOME10</strong> for 10% OFF</span>
+        <span class="announcement-bullet">•</span>
+        <span>Hassle-Free 30-Day Returns</span>
+      </div>
+      <div class="announcement-actions">
+        <div class="currency-dropdown-btn" style="position: relative;">
+          <span id="currentCurrencyLabel">🇺🇸 USD ($)</span>
+          <span style="font-size: 0.6rem;">▾</span>
+          <select class="currency-selector currency-selector-native" id="currencySelector" aria-label="Select Currency">
+            <option value="USD">USD ($)</option>
+            <option value="EUR">EUR (€)</option>
+            <option value="GBP">GBP (£)</option>
+            <option value="CAD">CAD ($)</option>
+            <option value="AUD">AUD ($)</option>
+            <option value="JPY">JPY (¥)</option>
+          </select>
+        </div>
+        <button class="announcement-close" onclick="dismissAnnouncement()" aria-label="Dismiss Announcement">✕</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- 2. SITE HEADER -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-container">
+      
+      <!-- Left Group: Hamburger Menu + Brand Logo -->
+      <div class="header-left-group">
+        <!-- Hamburger Menu Button -->
+        <button class="mobile-menu-btn" id="mobileMenuTrigger" aria-label="Open Navigation Menu">
+          <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+
+        <!-- Brand Logo (SHOP in Black, TUCH in Champagne Gold) -->
+        <a href="index.html" class="brand-logo" aria-label="ShopTuch Home">
+          <span class="logo-part-shop">SHOP</span><span class="logo-part-tuch">TUCH</span>
+        </a>
+      </div>
+
+      <!-- Center Desktop Navigation Links -->
+      <nav class="nav-links" aria-label="Primary Navigation">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="shop.html" class="nav-link">Shop</a>
+        <a href="category.html?cat=women" class="nav-link">Women</a>
+        <a href="category.html?cat=men" class="nav-link">Men</a>
+        <a href="shop.html?sort=newest" class="nav-link">New Arrivals</a>
+        <a href="about.html" class="nav-link">Our Atelier</a>
+      </nav>
+
+      <!-- Right Header Action Controls -->
+      <div class="header-actions">
+        <!-- Search Trigger Button -->
+        <button class="header-action-btn" id="searchTriggerBtn" onclick="SearchManager.open()" title="Search Products" aria-label="Search">
+          <svg width="21" height="21" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+          </svg>
+        </button>
+
+        <!-- Wishlist Button with Badge -->
+        <a href="wishlist.html" class="header-action-btn" title="Saved Wishlist" aria-label="View Wishlist">
+          <svg width="21" height="21" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+          </svg>
+          <span class="badge-count wishlist-badge-count" style="display: none;">0</span>
+        </a>
+
+        <!-- User Account / Profile Trigger Button -->
+        <button class="header-action-btn" id="accountTriggerBtn" onclick="openAccountModal()" title="Client Atelier Account" aria-label="Account Portal">
+          <svg width="21" height="21" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+          </svg>
+        </button>
+
+        <!-- Shopping Bag Trigger Button -->
+        <button class="header-action-btn" id="cartTriggerBtn" onclick="Cart.openDrawer()" title="Shopping Bag" aria-label="View Shopping Bag">
+          <svg width="21" height="21" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+          </svg>
+          <span class="badge-count cart-badge-count" style="display: none;">0</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- 2B. TRUST BADGES / FEATURES STRIP (COMPACT SINGLE LINE) -->
+  <section class="trust-badges-bar" aria-label="Shopping Benefits">
+    <div class="trust-badges-grid">
+      <!-- 1. Free Shipping -->
+      <div class="trust-badge-item">
+        <span class="trust-badge-icon">
+          <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a2 2 0 012 2v1h6a1 1 0 001-1v-4a1 1 0 00-.293-.707l-2.414-2.414A1 1 0 0017.586 10H15v6m-2 0H8m2 2a2 2 0 11-4 0 2 2 0 014 0zm10 0a2 2 0 11-4 0 2 2 0 014 0z"/>
+          </svg>
+        </span>
+        <span class="trust-badge-text">
+          <span class="trust-badge-title">Free Shipping</span>
+          <span class="trust-badge-desc">Over $75</span>
+        </span>
+      </div>
+
+      <!-- 2. Easy Returns -->
+      <div class="trust-badge-item">
+        <span class="trust-badge-icon">
+          <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+          </svg>
+        </span>
+        <span class="trust-badge-text">
+          <span class="trust-badge-title">Easy Returns</span>
+          <span class="trust-badge-desc">30 Days</span>
+        </span>
+      </div>
+
+      <!-- 3. Secure Payment -->
+      <div class="trust-badge-item">
+        <span class="trust-badge-icon">
+          <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+          </svg>
+        </span>
+        <span class="trust-badge-text">
+          <span class="trust-badge-title">Secure Checkout</span>
+          <span class="trust-badge-desc">100% Safe</span>
+        </span>
+      </div>
+
+      <!-- 4. 24/7 Support -->
+      <div class="trust-badge-item">
+        <span class="trust-badge-icon">
+          <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M18.364 5.636a9 9 0 010 12.728m0 0l-2.829-2.829m2.829 2.829L21 21M15.536 8.464a5 5 0 010 7.072m0 0l-2.829-2.829m-4.243 2.829a4.978 4.978 0 01-1.414-2.83m-1.414 5.658a9 9 0 01-2.167-9.238m7.824 2.167a1 1 0 111.414 1.414"/>
+          </svg>
+        </span>
+        <span class="trust-badge-text">
+          <span class="trust-badge-title">24/7 Support</span>
+          <span class="trust-badge-desc">Live Help</span>
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN HOMEPAGE CONTENT -->
+  <main id="mainContent">
+
+    <!-- 3. HERO BANNER SLIDER (USES BOTH BANNER IMAGES) -->
+    <section class="hero-slider-section" id="heroBannerSlider" aria-label="Featured Campaigns Carousel">
+      <div class="hero-slider-track">
+        
+        <!-- Slide 1: Winter Ready Collection (Matching reference image) -->
+        <div class="hero-slide active" aria-hidden="false" id="heroSlide1">
+          <img src="assets/images/banners/banner_winter_ready.jpg" alt="Winter Collection 2025 - Cozy in Style from $49" class="hero-slide-bg" referrerPolicy="no-referrer" />
+          <div class="hero-slide-overlay"></div>
+          <div class="container hero-slide-content">
+            <span class="hero-slide-badge">
+              <span class="badge-icon-tag">❄️</span> WINTER COLLECTION 2025
+            </span>
+            <h1 class="hero-slide-title">Cozy In Style From $49*</h1>
+            <p class="hero-slide-description">
+              Discover plush faux fur coats, cozy knitted layerings, and retro-chic cold weather statement pieces.
+            </p>
+            <div class="hero-slide-coupon-pill" onclick="copyPromoCode('ELLASHIP')" title="Click to copy coupon code">
+              <span>🎟️ Coupon: <strong>ELLASHIP</strong></span>
+              <span class="text-xs text-muted font-normal">• Click to Copy &amp; Apply</span>
+            </div>
+            <div class="hero-cta-group hero-slide-cta-group">
+              <a href="category.html?cat=outerwear" class="btn btn-primary btn-lg">Shop Winter Ready</a>
+              <a href="shop.html" class="btn btn-outline-white btn-lg">Explore Catalog</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 2: Forever BFF Special Deal (BOGO) -->
+        <div class="hero-slide" aria-hidden="true" id="heroSlide2">
+          <img src="assets/images/banners/banner_bff_deal.jpg" alt="Forever BFF Special Deal - Buy One Get One Free" class="hero-slide-bg" referrerPolicy="no-referrer" />
+          <div class="hero-slide-overlay"></div>
+          <div class="container hero-slide-content">
+            <span class="hero-slide-badge">
+              <span class="badge-icon-tag">★</span> SPECIAL CAMPAIGN • BUY 1 &amp; GET 1 FREE
+            </span>
+            <h1 class="hero-slide-title">Forever BFF Special Deal</h1>
+            <p class="hero-slide-description">
+              Celebrate friendship with vibrant summer essentials, designer eyewear, and matching chic wardrobe pieces. Buy one garment and get one free.
+            </p>
+            <div class="hero-slide-coupon-pill" onclick="copyPromoCode('BFFBOGO')" title="Click to copy coupon code">
+              <span>🎟️ Coupon: <strong>BFFBOGO</strong></span>
+              <span class="text-xs text-muted font-normal">• Click to Copy &amp; Apply</span>
+            </div>
+            <div class="hero-cta-group hero-slide-cta-group">
+              <a href="shop.html" class="btn btn-primary btn-lg">Shop BOGO Deal</a>
+              <a href="shop.html?sort=newest" class="btn btn-outline-white btn-lg">Explore Catalog</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Navigation Arrows -->
+      <button class="hero-nav-arrow prev" aria-label="Previous Slide">
+        <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/>
+        </svg>
+      </button>
+      <button class="hero-nav-arrow next" aria-label="Next Slide">
+        <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
+        </svg>
+      </button>
+
+      <!-- Pagination Dots -->
+      <div class="hero-slider-pagination" aria-label="Slide Selector">
+        <button class="hero-slider-dot active" data-slide-to="0" aria-label="Go to Slide 1" aria-current="true"></button>
+        <button class="hero-slider-dot" data-slide-to="1" aria-label="Go to Slide 2"></button>
+      </div>
+    </section>
+
+    <!-- 4. SHOP BY CATEGORY SECTION -->
+    <section class="section category-showcase-section" id="featuredCategoriesSection">
+      <div class="container">
+        <!-- Section Header -->
+        <div class="category-showcase-header">
+          <span class="category-showcase-badge">Curated Departments</span>
+          <h2 class="category-showcase-title" id="shopByCategoryHeading">Shop By Category</h2>
+          <p class="category-showcase-subtitle">Explore our most popular shopping categories.</p>
+        </div>
+
+        <!-- 8-Category 2-Column Grid -->
+        <div class="category-icon-cards-grid" role="region" aria-labelledby="shopByCategoryHeading">
+          <!-- 1. Fashion -->
+          <a href="category.html?cat=fashion" class="category-icon-card cat-theme-fashion" id="catCardFashion" aria-label="Shop Fashion Category">
+            <div class="category-icon-wrapper" aria-hidden="true">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16.5 2.2L13.8 4.2C13.3 4.6 12.7 4.8 12 4.8C11.3 4.8 10.7 4.6 10.2 4.2L7.5 2.2L1.8 5.8C1.4 6.1 1.2 6.6 1.4 7.1L3.6 12.2C3.8 12.7 4.4 13 4.9 12.8L7 12V21C7 21.6 7.4 22 8 22H16C16.6 22 17 21.6 17 21V12L19.1 12.8C19.6 13 20.2 12.7 20.4 12.2L22.6 7.1C22.8 6.6 22.6 6.1 22.2 5.8L16.5 2.2Z"/>
+              </svg>
+            </div>
+            <h3 class="category-icon-title">Fashion</h3>
+            <span class="category-icon-tag">Explore Collection →</span>
+          </a>
+
+          <!-- 2. Electronics -->
+          <a href="category.html?cat=electronics" class="category-icon-card cat-theme-electronics" id="catCardElectronics" aria-label="Shop Electronics Category">
+            <div class="category-icon-wrapper" aria-hidden="true">
+              <svg width="36" height="36" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="5.5" y="4.5" width="17" height="12.5" rx="2" stroke="currentColor" stroke-width="2.4" fill="none"/>
+                <path d="M2.5 19.5C2.5 18.4 3.4 17.5 4.5 17.5H23.5C24.6 17.5 25.5 18.4 25.5 19.5V20.5C25.5 21.1 25.1 21.5 24.5 21.5H3.5C2.9 21.5 2.5 21.1 2.5 20.5V19.5Z" fill="currentColor"/>
+              </svg>
+            </div>
+            <h3 class="category-icon-title">Electronics</h3>
+            <span class="category-icon-tag">Explore Collection →</span>
+          </a>
+
+          <!-- 3. Home & Living -->
+          <a href="category.html?cat=home-living" class="category-icon-card cat-theme-home" id="catCardHomeLiving" aria-label="Shop Home & Living Category">
+            <div class="category-icon-wrapper" aria-hidden="true">
+              <svg width="36" height="36" viewBox="0 0 28 28" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 9C7 7.34 8.34 6 10 6H18C19.66 6 21 7.34 21 9V13H7V9Z"/>
+                <rect x="3.5" y="10.5" width="4.5" height="9.5" rx="2.25"/>
+                <rect x="20" y="10.5" width="4.5" height="9.5" rx="2.25"/>
+                <rect x="6" y="13.5" width="16" height="6.5" rx="1.5"/>
+                <rect x="6.5" y="20.5" width="2.5" height="3" rx="1"/>
+                <rect x="19" y="20.5" width="2.5" height="3" rx="1"/>
+              </svg>
+            </div>
+            <h3 class="category-icon-title">Home & Living</h3>
+            <span class="category-icon-tag">Explore Collection →</span>
+          </a>
+
+          <!-- 4. Beauty -->
+          <a href="category.html?cat=beauty" class="category-icon-card cat-theme-beauty" id="catCardBeauty" aria-label="Shop Beauty Category">
+            <div class="category-icon-wrapper" aria-hidden="true">
+              <svg width="36" height="36" viewBox="0 0 28 28" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M14 4.5C14 4.5 10 9 10 13.5C10 16.2 11.8 18.2 14 19.2C16.2 18.2 18 16.2 18 13.5C18 9 14 4.5 14 4.5Z"/>
+                <path d="M5.5 14.5C5.5 14.5 8.5 13.5 11.2 16.2C12.2 17.2 12.8 18.8 12.8 19.8C10.2 19.8 7.2 18.2 5.5 14.5Z"/>
+                <path d="M22.5 14.5C22.5 14.5 19.5 13.5 16.8 16.2C15.8 17.2 15.2 18.8 15.2 19.8C17.8 19.8 20.8 18.2 22.5 14.5Z"/>
+              </svg>
+            </div>
+            <h3 class="category-icon-title">Beauty</h3>
+            <span class="category-icon-tag">Explore Collection →</span>
+          </a>
+
+          <!-- 5. Watches -->
+          <a href="category.html?cat=watches" class="category-icon-card cat-theme-watches" id="catCardWatches" aria-label="Shop Watches Category">
+            <div class="category-icon-wrapper" aria-hidden="true">
+              <svg width="36" height="36" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="14" cy="14" r="9.5"/>
+                <polyline points="14 8.5 14 14 18 14"/>
+              </svg>
+            </div>
+            <h3 class="category-icon-title">Watches</h3>
+            <span class="category-icon-tag">Explore Collection →</span>
+          </a>
+
+          <!-- 6. Bags -->
+          <a href="category.html?cat=bags" class="category-icon-card cat-theme-bags" id="catCardBags" aria-label="Shop Bags Category">
+            <div class="category-icon-wrapper" aria-hidden="true">
+              <svg width="36" height="36" viewBox="0 0 28 28" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10.5 5.5C10.5 4.67 11.17 4 12 4H16C16.83 4 17.5 4.67 17.5 5.5V7H10.5V5.5Z"/>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M5 8.5C5 7.67 5.67 7 6.5 7H21.5C22.33 7 23 7.67 23 8.5V12.5C23 12.78 22.89 13.04 22.71 13.24L21.5 14.5V21.5C21.5 22.33 20.83 23 20 23H8C7.17 23 6.5 22.33 6.5 21.5V14.5L5.29 13.24C5.11 13.04 5 12.78 5 12.5V8.5ZM7.5 9.5V11.5H12V11C12 10.45 12.45 10 13 10H15C15.55 10 16 10.45 16 11V11.5H20.5V9.5H7.5ZM8.5 15.5V20.5H19.5V15.5H16.5V16C16 16.55 15.55 17 15 17H13C12.45 17 12 16.55 12 16V15.5H8.5Z"/>
+              </svg>
+            </div>
+            <h3 class="category-icon-title">Bags</h3>
+            <span class="category-icon-tag">Explore Collection →</span>
+          </a>
+
+          <!-- 7. Shoes -->
+          <a href="category.html?cat=shoes" class="category-icon-card cat-theme-shoes" id="catCardShoes" aria-label="Shop Shoes Category">
+            <div class="category-icon-wrapper" aria-hidden="true">
+              <svg width="36" height="36" viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <!-- Upper right shoe print -->
+                <path d="M21.5 7C22.8 7 24.2 8.2 24.5 9.8C24.8 11.4 23.5 12.8 21.8 13.2C19.5 13.8 16.8 13.2 16 11.5C15.2 9.8 17.5 7 21.5 7Z"/>
+                <ellipse cx="23" cy="10" rx="3" ry="1.5" transform="rotate(-15 23 10)"/>
+                <!-- Lower left shoe print -->
+                <path d="M10.5 17C11.8 17 13.2 18.2 13.5 19.8C13.8 21.4 12.5 22.8 10.8 23.2C8.5 23.8 5.8 23.2 5 21.5C4.2 19.8 6.5 17 10.5 17Z"/>
+                <ellipse cx="12" cy="20" rx="3" ry="1.5" transform="rotate(-15 12 20)"/>
+              </svg>
+            </div>
+            <h3 class="category-icon-title">Shoes</h3>
+            <span class="category-icon-tag">Explore Collection →</span>
+          </a>
+
+          <!-- 8. Accessories -->
+          <a href="category.html?cat=accessories" class="category-icon-card cat-theme-accessories" id="catCardAccessories" aria-label="Shop Accessories Category">
+            <div class="category-icon-wrapper" aria-hidden="true">
+              <svg width="36" height="36" viewBox="0 0 28 28" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M7 6L21 6L26 13L14 24L2 13L7 6ZM8.2 7.5L4.5 12.5H8.8L10.5 7.5H8.2ZM12.2 7.5L10.3 12.5H17.7L15.8 7.5H12.2ZM17.5 7.5L19.2 12.5H23.5L19.8 7.5H17.5ZM5.5 14L14 22L9.5 14H5.5ZM11.5 14L14 21L16.5 14H11.5ZM18.5 14L14 22L22.5 14H18.5Z"/>
+              </svg>
+            </div>
+            <h3 class="category-icon-title">Accessories</h3>
+            <span class="category-icon-tag">Explore Collection →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. NEW ARRIVALS SECTION -->
+    <section class="section" style="background-color: var(--surface);" id="newArrivalsSection">
+      <div class="container">
+        <div class="flex items-center justify-between" style="margin-bottom: 32px; flex-wrap: wrap; gap: 16px;">
+          <div>
+            <span class="section-subtitle">JUST RELEASED</span>
+            <h2 class="section-title" style="margin-bottom: 0;">New Arrivals</h2>
+          </div>
+          <a href="shop.html?sort=newest" class="btn btn-secondary btn-sm">View All New In →</a>
+        </div>
+
+        <div class="product-grid grid-4" id="homeNewArrivalsGrid">
+          <!-- Dynamically populated from assets/js/products.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. DUAL CAMPAIGN PROMOTIONAL SPOTLIGHT -->
+    <section class="section promo-dual-section" id="capsuleBannerSection">
+      <div class="container">
+        <div class="section-header text-center" style="margin-bottom: 28px;">
+          <span class="section-subtitle">FEATURED CAMPAIGNS</span>
+          <h2 class="section-title">Limited Season Promotions</h2>
+          <p class="section-desc">Unlock exclusive savings and complimentary global express delivery on our signature edits.</p>
+        </div>
+
+        <div class="promo-dual-grid">
+          
+          <!-- Banner Card 1: Forever BFF Special Deal -->
+          <div class="promo-dual-card">
+            <img src="assets/images/banners/banner_bff_deal.jpg" alt="Forever BFF Special Deal" class="promo-card-bg" referrerPolicy="no-referrer" />
+            <div class="promo-card-overlay"></div>
+            <div class="promo-card-body">
+              <span class="promo-tag">★ FOREVER BFF • BUY 1 GET 1</span>
+              <h3 class="promo-title">BFF Special Deal: Buy 1 Get 1</h3>
+              <p class="promo-desc">
+                Mix and match top rated dresses, sunglasses, and curated friendship outfits. Receive 50% discount at checkout.
+              </p>
+              <div class="flex items-center gap-3 flex-wrap">
+                <a href="shop.html" class="btn btn-primary btn-sm">Shop BOGO Deal</a>
+                <button type="button" class="btn btn-white btn-sm" onclick="copyPromoCode('BFFBOGO')">Copy Code: BFFBOGO</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Banner Card 2: Winter Ready Free Ship Today -->
+          <div class="promo-dual-card">
+            <img src="assets/images/banners/banner_winter_ready.jpg" alt="Winter Ready - Free Ship Today" class="promo-card-bg" referrerPolicy="no-referrer" />
+            <div class="promo-card-overlay"></div>
+            <div class="promo-card-body">
+              <span class="promo-tag">❄️ WINTER READY • FREE SHIP TODAY</span>
+              <h3 class="promo-title">Winter Ready from $49*</h3>
+              <p class="promo-desc">
+                Snuggle into premium faux fur jackets, wool overcoats & cozy knits with zero shipping fees.
+              </p>
+              <div class="flex items-center gap-3 flex-wrap">
+                <a href="category.html?cat=outerwear" class="btn btn-primary btn-sm">Shop Outerwear</a>
+                <button type="button" class="btn btn-white btn-sm" onclick="copyPromoCode('ELLASHIP')">Copy Code: ELLASHIP</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. BEST SELLERS SECTION -->
+    <section class="section" id="bestSellersSection">
+      <div class="container">
+        <div class="flex items-center justify-between" style="margin-bottom: 32px; flex-wrap: wrap; gap: 16px;">
+          <div>
+            <span class="section-subtitle">MOST COVETED</span>
+            <h2 class="section-title" style="margin-bottom: 0;">Best Sellers</h2>
+          </div>
+          <a href="shop.html?sort=bestseller" class="btn btn-secondary btn-sm">Shop All Best Sellers →</a>
+        </div>
+
+        <div class="product-grid grid-4" id="homeBestSellersGrid">
+          <!-- Dynamically populated from assets/js/products.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. WHY SHOPTUCH / VALUE PROPOSITIONS -->
+    <section class="section" style="background-color: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);" id="featuresSection">
+      <div class="container">
+        <div class="grid grid-4 gap-6 text-center">
+          <div class="feature-item" style="padding: 24px 16px;">
+            <div class="feature-icon-wrapper" style="width: 56px; height: 56px; margin: 0 auto 16px auto; border-radius: 50%; background: var(--surface-2); display: flex; align-items: center; justify-content: center; color: var(--accent);">
+              <svg width="26" height="26" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M5 13l4 4L19 7"/>
+              </svg>
+            </div>
+            <h4 class="font-serif" style="font-size: 1.2rem; margin-bottom: 6px;">100% Sustainable Fabrics</h4>
+            <p class="text-xs text-muted">Certified GOTS organic cottons, cruelty-free silks, and ethically sourced wool.</p>
+          </div>
+
+          <div class="feature-item" style="padding: 24px 16px;">
+            <div class="feature-icon-wrapper" style="width: 56px; height: 56px; margin: 0 auto 16px auto; border-radius: 50%; background: var(--surface-2); display: flex; align-items: center; justify-content: center; color: var(--accent);">
+              <svg width="26" height="26" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
+              </svg>
+            </div>
+            <h4 class="font-serif" style="font-size: 1.2rem; margin-bottom: 6px;">Complimentary Express Shipping</h4>
+            <p class="text-xs text-muted">Free trackable courier delivery worldwide on all orders over $75.</p>
+          </div>
+
+          <div class="feature-item" style="padding: 24px 16px;">
+            <div class="feature-icon-wrapper" style="width: 56px; height: 56px; margin: 0 auto 16px auto; border-radius: 50%; background: var(--surface-2); display: flex; align-items: center; justify-content: center; color: var(--accent);">
+              <svg width="26" height="26" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+              </svg>
+            </div>
+            <h4 class="font-serif" style="font-size: 1.2rem; margin-bottom: 6px;">30-Day Effortless Returns</h4>
+            <p class="text-xs text-muted">Prepaid return labels and direct exchange portal with zero restocking fees.</p>
+          </div>
+
+          <div class="feature-item" style="padding: 24px 16px;">
+            <div class="feature-icon-wrapper" style="width: 56px; height: 56px; margin: 0 auto 16px auto; border-radius: 50%; background: var(--surface-2); display: flex; align-items: center; justify-content: center; color: var(--accent);">
+              <svg width="26" height="26" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+              </svg>
+            </div>
+            <h4 class="font-serif" style="font-size: 1.2rem; margin-bottom: 6px;">Bank-Grade Secure Checkout</h4>
+            <p class="text-xs text-muted">256-bit encrypted transactions with Apple Pay, Google Pay, Visa & Mastercard.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. TRENDING CURATED PRODUCTS -->
+    <section class="section" id="trendingSection">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-subtitle">SEASONAL EDIT</span>
+          <h2 class="section-title">Trending This Season</h2>
+          <p class="section-desc">The modern wardrobe essentials commanding universal acclaim.</p>
+        </div>
+        <div class="product-grid grid-4" id="homeTrendingGrid">
+          <!-- Dynamically populated from assets/js/products.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 10. TESTIMONIALS SECTION -->
+    <section class="section" style="background: var(--surface);" id="testimonialsSection">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-subtitle">COMMUNITY REVIEWS</span>
+          <h2 class="section-title">What Our Patrons Say</h2>
+          <p class="section-desc">Over 10,000 discerning clients across 48 countries.</p>
+        </div>
+
+        <div class="grid grid-3 gap-6">
+          <div class="testimonial-card" style="background: var(--bg); padding: 32px 24px; border-radius: var(--radius-sm); border: 1px solid var(--border);">
+            <div class="rating-stars" style="color: var(--accent); margin-bottom: 12px;">★★★★★</div>
+            <p class="text-sm" style="font-style: italic; line-height: 1.7; margin-bottom: 16px;">
+              "The Heavyweight Boxy Hoodie and Wool Overcoat are absolute masterpieces. The drape and density of the fabrics rival luxury Parisian fashion houses at a fraction of the mark-up."
+            </p>
+            <div class="flex items-center gap-3">
+              <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--surface-2); display: flex; align-items: center; justify-content: center; font-weight: bold; color: var(--accent);">VR</div>
+              <div>
+                <strong class="text-sm" style="display: block;">Victoria Reynolds</strong>
+                <span class="text-xs text-muted">London, UK • Verified Buyer</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card" style="background: var(--bg); padding: 32px 24px; border-radius: var(--radius-sm); border: 1px solid var(--border);">
+            <div class="rating-stars" style="color: var(--accent); margin-bottom: 12px;">★★★★★</div>
+            <p class="text-sm" style="font-style: italic; line-height: 1.7; margin-bottom: 16px;">
+              "Everything about ShopTuch screams quality. The packaging is 100% recyclable yet feels like opening a couture box. The Selvedge Denim fit is the best I have ever worn."
+            </p>
+            <div class="flex items-center gap-3">
+              <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--surface-2); display: flex; align-items: center; justify-content: center; font-weight: bold; color: var(--accent);">AK</div>
+              <div>
+                <strong class="text-sm" style="display: block;">Alexander Kim</strong>
+                <span class="text-xs text-muted">New York, USA • Verified Buyer</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card" style="background: var(--bg); padding: 32px 24px; border-radius: var(--radius-sm); border: 1px solid var(--border);">
+            <div class="rating-stars" style="color: var(--accent); margin-bottom: 12px;">★★★★★</div>
+            <p class="text-sm" style="font-style: italic; line-height: 1.7; margin-bottom: 16px;">
+              "Customer service handled my size exchange in under 24 hours without a single friction point. The Mulberry Silk Slip Dress is my favorite garment in my entire wardrobe."
+            </p>
+            <div class="flex items-center gap-3">
+              <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--surface-2); display: flex; align-items: center; justify-content: center; font-weight: bold; color: var(--accent);">SM</div>
+              <div>
+                <strong class="text-sm" style="display: block;">Sophie Moreau</strong>
+                <span class="text-xs text-muted">Paris, France • Verified Buyer</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11. INSTAGRAM / ATELIER GALLERY -->
+    <section class="section social-gallery-section" id="atelierGallerySection">
+      <div class="container text-center" style="margin-bottom: 28px;">
+        <span class="section-subtitle">#SHOPTUCHATELIER</span>
+        <h2 class="section-title">Styled by You</h2>
+        <p class="section-desc">Tag @ShopTuch on Instagram to be featured in our seasonal lookbook.</p>
+      </div>
+
+      <div class="container">
+        <div class="social-gallery-grid atelier-gallery-grid">
+          <!-- Tile 1 -->
+          <div class="social-gallery-item gallery-tile">
+            <img src="assets/images/products/product-01.svg" alt="Instagram Style 1" loading="lazy" />
+            <div class="social-overlay">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              <span class="social-overlay-tag">@ShopTuch</span>
+            </div>
+          </div>
+
+          <!-- Tile 2 -->
+          <div class="social-gallery-item gallery-tile">
+            <img src="assets/images/products/product-02.svg" alt="Instagram Style 2" loading="lazy" />
+            <div class="social-overlay">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              <span class="social-overlay-tag">#StyleInShopTuch</span>
+            </div>
+          </div>
+
+          <!-- Tile 3 -->
+          <div class="social-gallery-item gallery-tile">
+            <img src="assets/images/products/product-03.svg" alt="Instagram Style 3" loading="lazy" />
+            <div class="social-overlay">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              <span class="social-overlay-tag">@ShopTuch</span>
+            </div>
+          </div>
+
+          <!-- Tile 4 -->
+          <div class="social-gallery-item gallery-tile">
+            <img src="assets/images/products/product-04.svg" alt="Instagram Style 4" loading="lazy" />
+            <div class="social-overlay">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              <span class="social-overlay-tag">#AtelierLook</span>
+            </div>
+          </div>
+
+          <!-- Tile 5 -->
+          <div class="social-gallery-item gallery-tile">
+            <img src="assets/images/products/product-05.svg" alt="Instagram Style 5" loading="lazy" />
+            <div class="social-overlay">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              <span class="social-overlay-tag">@ShopTuch</span>
+            </div>
+          </div>
+
+          <!-- Tile 6 -->
+          <div class="social-gallery-item gallery-tile">
+            <img src="assets/images/products/product-06.svg" alt="Instagram Style 6" loading="lazy" />
+            <div class="social-overlay">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              <span class="social-overlay-tag">#ShopTuchStyle</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 12. VIP NEWSLETTER -->
+    <section class="section newsletter-section" id="newsletterSection">
+      <div class="container text-center" style="max-width: 680px;">
+        <span class="section-subtitle">THE SHOPTUCH JOURNAL</span>
+        <h2 class="section-title">Join The Private Atelier</h2>
+        <p class="text-sm text-muted" style="margin-bottom: 24px;">
+          Subscribe to receive private preview invitations, limited capsule access, and an instant <strong>10% discount code</strong> for your initial order.
+        </p>
+
+        <form class="newsletter-form flex gap-2 justify-center flex-wrap" style="max-width: 500px; margin: 0 auto;">
+          <input type="email" class="form-input" placeholder="Enter your email address" required style="flex: 1; min-width: 240px;" aria-label="Email address for newsletter" />
+          <button type="submit" class="btn btn-primary">Subscribe</button>
+        </form>
+        <span class="text-xs text-muted" style="display: block; margin-top: 10px;">We respect your privacy. Unsubscribe at any time with one click.</span>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 13. SITE FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="grid grid-3 gap-8 footer-main" style="padding-bottom: 48px; border-bottom: 1px solid var(--border);">
+        <!-- Col 1: Brand Info -->
+        <div>
+          <div class="flex items-center gap-2" style="margin-bottom: 16px;">
+            <img src="assets/images/logo/shoptuch-logo.svg" alt="ShopTuch Logo" width="28" height="28" />
+            <span class="brand-name font-bold tracking-wider">SHOPTUCH</span>
+          </div>
+          <p class="text-sm text-muted" style="line-height: 1.7; margin-bottom: 20px;">
+            An independent luxury atelier delivering timeless modern silhouettes crafted from sustainably sourced natural fibers.
+          </p>
+          <div class="flex items-center gap-3">
+            <a href="#" class="social-icon" aria-label="Instagram">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="Pinterest">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.372-12 12 0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345-.09.375-.291 1.199-.332 1.357-.053.211-.174.256-.402.155-1.498-.696-2.435-2.883-2.435-4.643 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146 1.124.347 2.317.535 3.554.535 6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/></svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="X Twitter">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Col 2: Client Service -->
+        <div>
+          <h4 class="footer-title">Client Care</h4>
+          <ul class="footer-links">
+            <li><a href="shipping-policy.html">Shipping & Global Delivery</a></li>
+            <li><a href="return-policy.html">30-Day Returns & Exchanges</a></li>
+            <li><a href="faq.html">Frequently Asked Questions</a></li>
+            <li><a href="admin-demo.html">Admin Inventory Demo</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Legal & Ethics -->
+        <div>
+          <h4 class="footer-title">The Maison</h4>
+          <ul class="footer-links">
+            <li><a href="about.html">Our Sustainability Philosophy</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+            <li><a href="wishlist.html">Your Saved Wishlist</a></li>
+            <li><a href="cart.html">View Shopping Bag</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="flex items-center justify-between flex-wrap gap-4" style="padding-top: 32px;">
+        <span class="text-xs text-muted">© 2026 ShopTuch Atelier Inc. All rights reserved.</span>
+        <div class="flex items-center gap-4">
+          <span class="text-xs text-muted font-mono">100% ENCRYPTED CHECKOUT</span>
+          <span class="text-xs text-muted">•</span>
+          <span class="text-xs text-muted">VISA • MASTERCARD • AMEX • APPLE PAY</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SEARCH MODAL OVERLAY -->
+  <div class="search-modal-backdrop" id="searchModal">
+    <div class="search-modal-container">
+      <div class="flex items-center justify-between" style="margin-bottom: 20px;">
+        <div class="flex items-center gap-2">
+          <img src="assets/images/logo/shoptuch-logo.svg" alt="ShopTuch" width="24" height="24" />
+          <span class="text-xs tracking-widest uppercase font-bold text-muted">Search The Atelier</span>
+        </div>
+        <button class="modal-close-btn" id="searchCloseBtn" aria-label="Close Search">✕</button>
+      </div>
+
+      <div class="search-input-wrapper">
+        <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24" class="search-icon-inside">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+        </svg>
+        <input type="text" id="searchInputField" class="search-input-field" placeholder="Search by garment, fabric, color, or category..." autocomplete="off" />
+      </div>
+
+      <div id="searchResultsArea" style="max-height: 420px; overflow-y: auto; padding-right: 4px;">
+        <!-- Dynamically rendered by SearchManager -->
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE-OVER SHOPPING BAG DRAWER -->
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping Bag">
+    <div class="cart-drawer-header">
+      <div class="flex items-center gap-2">
+        <h3 class="font-serif" style="font-size: 1.35rem; margin: 0;">Shopping Bag</h3>
+        <span class="badge badge-best cart-badge-count" style="display: none;">0</span>
+      </div>
+      <button class="drawer-close-btn" onclick="Cart.closeDrawer()" aria-label="Close Shopping Bag">✕</button>
+    </div>
+
+    <!-- Free Shipping Progress Tracker -->
+    <div class="drawer-shipping-tracker" id="drawerShippingProgress">
+      <!-- Rendered by Cart.renderDrawer -->
+    </div>
+
+    <!-- Drawer Body List -->
+    <div class="cart-drawer-body" id="cartDrawerBody">
+      <!-- Rendered by Cart.renderDrawer -->
+    </div>
+
+    <!-- Drawer Summary & CTAs -->
+    <div class="cart-drawer-footer" id="cartDrawerFooter">
+      <!-- Rendered by Cart.renderDrawer -->
+    </div>
+  </aside>
+
+  <!-- MOBILE NAVIGATION DRAWER -->
+  <aside class="mobile-nav-drawer" id="mobileNavDrawer" aria-label="Mobile Navigation">
+    <div class="flex items-center justify-between" style="padding: 20px; border-bottom: 1px solid var(--border);">
+      <div class="flex items-center gap-2">
+        <img src="assets/images/logo/shoptuch-logo.svg" alt="ShopTuch Logo" width="28" height="28" />
+        <span class="brand-name">SHOPTUCH</span>
+      </div>
+      <button class="drawer-close-btn" id="mobileMenuClose" aria-label="Close Menu">✕</button>
+    </div>
+
+    <div class="mobile-nav-links">
+      <a href="index.html" class="mobile-nav-link active">Home</a>
+      <a href="shop.html" class="mobile-nav-link">Shop All Catalog</a>
+      <a href="category.html?cat=fashion" class="mobile-nav-link">Fashion</a>
+      <a href="category.html?cat=electronics" class="mobile-nav-link">Electronics</a>
+      <a href="category.html?cat=home-living" class="mobile-nav-link">Home & Living</a>
+      <a href="category.html?cat=beauty" class="mobile-nav-link">Beauty & Wellness</a>
+      <a href="category.html?cat=watches" class="mobile-nav-link">Watches</a>
+      <a href="category.html?cat=bags" class="mobile-nav-link">Bags</a>
+      <a href="category.html?cat=shoes" class="mobile-nav-link">Shoes</a>
+      <a href="category.html?cat=accessories" class="mobile-nav-link">Accessories</a>
+      <a href="wishlist.html" class="mobile-nav-link">Saved Wishlist</a>
+      <a href="cart.html" class="mobile-nav-link">Shopping Bag</a>
+      <a href="about.html" class="mobile-nav-link">Our Atelier</a>
+      <a href="contact.html" class="mobile-nav-link">Client Care</a>
+    </div>
+
+    <div style="padding: 20px; border-top: 1px solid var(--border); margin-top: auto;">
+      <label class="form-label text-xs uppercase">Currency</label>
+      <select class="form-select" id="mobileCurrencySelector" aria-label="Select Currency">
+        <option value="USD">USD ($)</option>
+        <option value="EUR">EUR (€)</option>
+        <option value="GBP">GBP (£)</option>
+        <option value="CAD">CAD ($)</option>
+        <option value="AUD">AUD ($)</option>
+        <option value="JPY">JPY (¥)</option>
+      </select>
+    </div>
+  </aside>
+
+  <!-- QUICK VIEW MODAL -->
+  <div class="modal-backdrop" id="quickViewModal">
+    <div class="modal-card" style="max-width: 740px;">
+      <button class="modal-close-btn" onclick="closeQuickView()" aria-label="Close">✕</button>
+      <div id="quickViewModalBody">
+        <!-- Rendered by window.openQuickView -->
+      </div>
+    </div>
+  </div>
+
+  <!-- SIZE GUIDE MODAL -->
+  <div class="modal-backdrop" id="sizeGuideModal">
+    <div class="modal-card" style="max-width: 680px;">
+      <button class="modal-close-btn" onclick="closeSizeGuideModal()" aria-label="Close">✕</button>
+      <h3 class="font-serif" style="font-size: 1.6rem; margin-bottom: 8px;">Garment Sizing & Fit Guide</h3>
+      <p class="text-sm text-muted" style="margin-bottom: 20px;">All measurements reflect body measurements in inches and centimeters.</p>
+      
+      <div style="overflow-x: auto;">
+        <table class="table" style="font-size: 0.85rem; width: 100%; border-collapse: collapse; text-align: left;">
+          <thead>
+            <tr style="border-bottom: 2px solid var(--border);">
+              <th style="padding: 10px;">Size</th>
+              <th style="padding: 10px;">Chest (In / CM)</th>
+              <th style="padding: 10px;">Waist (In / CM)</th>
+              <th style="padding: 10px;">Hips (In / CM)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 10px; font-weight: bold;">XS</td>
+              <td style="padding: 10px;">34–36" / 86–91 cm</td>
+              <td style="padding: 10px;">28–30" / 71–76 cm</td>
+              <td style="padding: 10px;">34–36" / 86–91 cm</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 10px; font-weight: bold;">S</td>
+              <td style="padding: 10px;">36–38" / 91–96 cm</td>
+              <td style="padding: 10px;">30–32" / 76–81 cm</td>
+              <td style="padding: 10px;">36–38" / 91–96 cm</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 10px; font-weight: bold;">M</td>
+              <td style="padding: 10px;">38–40" / 96–101 cm</td>
+              <td style="padding: 10px;">32–34" / 81–86 cm</td>
+              <td style="padding: 10px;">38–40" / 96–101 cm</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 10px; font-weight: bold;">L</td>
+              <td style="padding: 10px;">40–42" / 101–106 cm</td>
+              <td style="padding: 10px;">34–36" / 86–91 cm</td>
+              <td style="padding: 10px;">40–42" / 101–106 cm</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 10px; font-weight: bold;">XL</td>
+              <td style="padding: 10px;">42–44" / 106–112 cm</td>
+              <td style="padding: 10px;">36–38" / 91–97 cm</td>
+              <td style="padding: 10px;">42–44" / 106–112 cm</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="margin-top: 20px; text-align: right;">
+        <button class="btn btn-secondary btn-sm" onclick="closeSizeGuideModal()">Close Guide</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- USER ACCOUNT & ATELIER PORTAL MODAL -->
+  <div class="modal-backdrop" id="accountModal">
+    <div class="modal-card" style="max-width: 480px; padding: 32px 28px;">
+      <button class="modal-close-btn" onclick="closeAccountModal()" aria-label="Close">✕</button>
+      <div class="text-center" style="margin-bottom: 22px;">
+        <div class="brand-logo" style="margin-bottom: 8px; justify-content: center;">
+          <span class="logo-part-shop">SHOP</span><span class="logo-part-tuch">TUCH</span>
+        </div>
+        <h3 class="font-serif" style="font-size: 1.45rem; margin-bottom: 4px;">Atelier Client Portal</h3>
+        <p class="text-xs text-muted">Access your personalized wardrobe, saved wishlist &amp; express orders.</p>
+      </div>
+
+      <div style="display: flex; align-items: center; justify-content: center; gap: 8px; border-bottom: 1px solid var(--border); margin-bottom: 20px;">
+        <button class="account-tab-btn active" id="tabSigninBtn" onclick="switchAccountTab('signin')">Sign In</button>
+        <button class="account-tab-btn" id="tabRegisterBtn" onclick="switchAccountTab('register')">Create Account</button>
+        <button class="account-tab-btn" id="tabOrdersBtn" onclick="switchAccountTab('orders')">Track Order</button>
+      </div>
+
+      <div id="accountSigninView">
+        <form onsubmit="handleAccountLogin(event)" style="display: flex; flex-direction: column; gap: 14px;">
+          <div>
+            <label class="form-label" style="font-size: 0.72rem; text-transform: uppercase; font-weight: 700; display: block; margin-bottom: 4px;">Email Address</label>
+            <input type="email" class="form-input" id="loginEmail" placeholder="patron@shoptuch.com" value="patron@shoptuch.com" required />
+          </div>
+          <div>
+            <label class="form-label" style="font-size: 0.72rem; text-transform: uppercase; font-weight: 700; display: block; margin-bottom: 4px;">Password</label>
+            <input type="password" class="form-input" id="loginPassword" placeholder="••••••••" value="password123" required />
+          </div>
+          <div style="display: flex; align-items: center; justify-content: space-between; font-size: 0.75rem;">
+            <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;">
+              <input type="checkbox" checked /> Remember session
+            </label>
+            <a href="#" style="color: var(--text-muted);" onclick="showToast('Password reset link sent to your email!', 'info'); return false;">Forgot password?</a>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block" style="margin-top: 6px; padding: 12px;">Sign In to Maison</button>
+          <button type="button" class="btn btn-secondary btn-block" onclick="handleDemoLogin()" style="padding: 10px; font-size: 0.8rem;">⚡ 1-Click Demo VIP Access</button>
+        </form>
+      </div>
+
+      <div id="accountRegisterView" style="display: none;">
+        <form onsubmit="handleAccountRegister(event)" style="display: flex; flex-direction: column; gap: 14px;">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+            <div>
+              <label class="form-label" style="font-size: 0.72rem; text-transform: uppercase; font-weight: 700; display: block; margin-bottom: 4px;">First Name</label>
+              <input type="text" class="form-input" placeholder="Eleanor" required />
+            </div>
+            <div>
+              <label class="form-label" style="font-size: 0.72rem; text-transform: uppercase; font-weight: 700; display: block; margin-bottom: 4px;">Last Name</label>
+              <input type="text" class="form-input" placeholder="Vance" required />
+            </div>
+          </div>
+          <div>
+            <label class="form-label" style="font-size: 0.72rem; text-transform: uppercase; font-weight: 700; display: block; margin-bottom: 4px;">Email Address</label>
+            <input type="email" class="form-input" placeholder="eleanor@example.com" required />
+          </div>
+          <div>
+            <label class="form-label" style="font-size: 0.72rem; text-transform: uppercase; font-weight: 700; display: block; margin-bottom: 4px;">Create Password</label>
+            <input type="password" class="form-input" placeholder="••••••••" required />
+          </div>
+          <button type="submit" class="btn btn-primary btn-block" style="margin-top: 6px; padding: 12px;">Join Atelier Privileges</button>
+        </form>
+      </div>
+
+      <div id="accountOrdersView" style="display: none;">
+        <form onsubmit="handleTrackOrder(event)" style="display: flex; flex-direction: column; gap: 14px;">
+          <div>
+            <label class="form-label" style="font-size: 0.72rem; text-transform: uppercase; font-weight: 700; display: block; margin-bottom: 4px;">Order Tracking Number</label>
+            <input type="text" class="form-input" id="trackOrderNumber" placeholder="ST-84920" required />
+          </div>
+          <div>
+            <label class="form-label" style="font-size: 0.72rem; text-transform: uppercase; font-weight: 700; display: block; margin-bottom: 4px;">Billing Email</label>
+            <input type="email" class="form-input" id="trackOrderEmail" placeholder="your@email.com" required />
+          </div>
+          <button type="submit" class="btn btn-primary btn-block" style="padding: 12px;">Track Shipment</button>
+          <div id="trackResultBox" style="display: none; padding: 14px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-xs); font-size: 0.85rem;">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- FLOATING BACK TO TOP BUTTON -->
+  <button class="back-to-top" id="backToTopBtn" aria-label="Back to Top">
+    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+    </svg>
+  </button>
+
+  <!-- TOAST NOTIFICATION CONTAINER -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- SCRIPTS -->
+  <script type="module" src="/assets/js/products.js"></script>
+  <script type="module" src="/assets/js/cart.js"></script>
+  <script type="module" src="/assets/js/wishlist.js"></script>
+  <script type="module" src="/assets/js/search.js"></script>
+  <script type="module" src="/assets/js/filters.js"></script>
+  <script type="module" src="/assets/js/app.js"></script>
+
+  <!-- Homepage Rendering Script -->
+  <script type="module">
+    function renderHomePageSections() {
+      if (typeof ProductService === 'undefined' || typeof FilterManager === 'undefined') return;
+
+      const newArrivalsGrid = document.getElementById('homeNewArrivalsGrid');
+      const bestSellersGrid = document.getElementById('homeBestSellersGrid');
+      const trendingGrid = document.getElementById('homeTrendingGrid');
+
+      if (newArrivalsGrid) {
+        const newArrivals = ProductService.getNewArrivals(4);
+        newArrivalsGrid.innerHTML = newArrivals.map(p => FilterManager.generateCardHTML(p)).join('');
+      }
+
+      if (bestSellersGrid) {
+        const bestSellers = ProductService.getBestSellers(4);
+        bestSellersGrid.innerHTML = bestSellers.map(p => FilterManager.generateCardHTML(p)).join('');
+      }
+
+      if (trendingGrid) {
+        const trending = ProductService.getTrending(4);
+        trendingGrid.innerHTML = trending.map(p => FilterManager.generateCardHTML(p)).join('');
+      }
+
+      if (typeof Wishlist !== 'undefined') {
+        Wishlist.updateButtons();
+      }
+    }
+
+    window.renderHomePageSections = renderHomePageSections;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderHomePageSections();
+    });
+
+    // Also run immediately if DOM is already ready
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+      renderHomePageSections();
+    }
+  </script>
+</body>
+</html>

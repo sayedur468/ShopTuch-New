@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Catalog & Inventory Demo — ShopTuch</title>
+  <meta name="description" content="ShopTuch admin inventory dashboard demo to inspect products, add custom items, and manage live local catalog." />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/assets/images/logo/shoptuch-logo.svg" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/assets/css/style.css" />
+  <link rel="stylesheet" href="/assets/css/components.css" />
+  <link rel="stylesheet" href="/assets/css/responsive.css" />
+</head>
+<body style="background: var(--surface-2);">
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container header-container">
+      <a href="index.html" class="brand-logo">
+        <img src="/assets/images/logo/shoptuch-logo.svg" alt="Logo" width="34" height="34" />
+        <span class="brand-name">SHOPTUCH <span class="badge badge-sale" style="font-size: 0.65rem; margin-left: 6px;">ADMIN DEMO</span></span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">Storefront</a>
+        <a href="shop.html" class="nav-link">Catalog</a>
+        <a href="admin-demo.html" class="nav-link active">Inventory Console</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="header-action-btn theme-toggle-btn" title="Toggle Theme">◐</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN ADMIN DASHBOARD -->
+  <main style="padding: 36px 0 80px 0;">
+    <div class="container">
+      
+      <!-- Top Action Bar -->
+      <div class="flex items-center justify-between flex-wrap gap-4" style="margin-bottom: 28px;">
+        <div>
+          <span class="section-subtitle">CATALOG MANAGEMENT</span>
+          <h1 class="font-serif" style="font-size: 2.2rem; margin: 4px 0;">Atelier Products & Inventory</h1>
+          <span class="text-xs text-muted" id="adminTotalCount">Loading products...</span>
+        </div>
+
+        <div class="flex gap-2">
+          <button class="btn btn-primary btn-sm" onclick="openAddProductModal()">+ Add New Product</button>
+          <button class="btn btn-secondary btn-sm" onclick="handleResetCatalog()">Reset to Factory Catalog</button>
+        </div>
+      </div>
+
+      <!-- Products Inventory Table -->
+      <div style="background: var(--surface); padding: 24px; border-radius: var(--radius-sm); border: 1px solid var(--border); overflow-x: auto;">
+        <table class="table" style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">
+          <thead>
+            <tr style="border-bottom: 2px solid var(--border); text-align: left; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); font-size: 0.75rem;">
+              <th style="padding: 12px 8px;">SKU</th>
+              <th style="padding: 12px 8px;">Garment</th>
+              <th style="padding: 12px 8px;">Category</th>
+              <th style="padding: 12px 8px;">Gender</th>
+              <th style="padding: 12px 8px;">Price</th>
+              <th style="padding: 12px 8px;">Stock Status</th>
+              <th style="padding: 12px 8px; text-align: right;">Action</th>
+            </tr>
+          </thead>
+          <tbody id="adminProductsTableBody">
+            <!-- Rendered via JS -->
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ADD PRODUCT MODAL -->
+  <div class="modal-backdrop" id="addProductModal">
+    <div class="modal-card" style="max-width: 600px;">
+      <button class="modal-close-btn" onclick="closeAddProductModal()">✕</button>
+      <h3 class="font-serif" style="font-size: 1.6rem; margin-bottom: 16px;">Add Custom Atelier Product</h3>
+      
+      <form id="addProductForm" onsubmit="handleAddProductSubmit(event)">
+        <div class="grid grid-2 gap-3" style="margin-bottom: 12px;">
+          <div class="form-group">
+            <label class="form-label text-xs uppercase font-bold">Product Title *</label>
+            <input type="text" id="newTitle" class="form-input" placeholder="Cashmere Structured Blazer" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label text-xs uppercase font-bold">Category *</label>
+            <select id="newCategory" class="form-select" required>
+              <option value="Outerwear">Outerwear</option>
+              <option value="Hoodies">Hoodies</option>
+              <option value="Dresses">Dresses</option>
+              <option value="Shoes">Shoes</option>
+              <option value="Accessories">Accessories</option>
+              <option value="Tops">Tops</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid grid-3 gap-3" style="margin-bottom: 12px;">
+          <div class="form-group">
+            <label class="form-label text-xs uppercase font-bold">Price ($) *</label>
+            <input type="number" id="newPrice" class="form-input" placeholder="185.00" step="0.01" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label text-xs uppercase font-bold">Gender *</label>
+            <select id="newGender" class="form-select">
+              <option value="women">Women</option>
+              <option value="men">Men</option>
+              <option value="unisex">Unisex</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label text-xs uppercase font-bold">Stock Count *</label>
+            <input type="number" id="newStock" class="form-input" value="25" required />
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 16px;">
+          <label class="form-label text-xs uppercase font-bold">Description *</label>
+          <textarea id="newDesc" class="form-input" rows="3" placeholder="Crafted from pure natural Italian wool..." required></textarea>
+        </div>
+
+        <div class="flex justify-between items-center" style="margin-top: 20px;">
+          <button type="button" class="btn btn-secondary btn-sm" onclick="closeAddProductModal()">Cancel</button>
+          <button type="submit" class="btn btn-primary btn-sm">Save & Publish to Catalog</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- TOAST CONTAINER -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- SCRIPTS -->
+  <script type="module" src="/assets/js/products.js"></script>
+  <script type="module" src="/assets/js/cart.js"></script>
+  <script type="module" src="/assets/js/wishlist.js"></script>
+  <script type="module" src="/assets/js/search.js"></script>
+  <script type="module" src="/assets/js/filters.js"></script>
+  <script type="module" src="/assets/js/app.js"></script>
+
+  <script type="module">
+    function renderAdminTable() {
+      const tbody = document.getElementById('adminProductsTableBody');
+      const countEl = document.getElementById('adminTotalCount');
+      if (!tbody) return;
+
+      const products = ProductService.getAll();
+      if (countEl) countEl.textContent = `Showing all ${products.length} live inventory items`;
+
+      tbody.innerHTML = products.map(p => `
+        <tr style="border-bottom: 1px solid var(--border);">
+          <td style="padding: 12px 8px; font-family: monospace; font-weight: bold;">${p.sku || p.id}</td>
+          <td style="padding: 12px 8px;">
+            <div class="flex items-center gap-3">
+              <img src="${p.images && p.images[0] ? p.images[0] : '/assets/images/logo/shoptuch-logo.svg'}" alt="${p.title}" style="width: 40px; height: 50px; object-fit: cover; border-radius: 4px; background: var(--surface-2);" onerror="this.src='/assets/images/logo/shoptuch-logo.svg'"/>
+              <div>
+                <a href="product.html?id=${p.id}" class="font-semibold" style="color: var(--text);">${p.title}</a>
+                <div class="text-xs text-muted">${p.brand || 'ShopTuch'}</div>
+              </div>
+            </div>
+          </td>
+          <td style="padding: 12px 8px;">${p.category}</td>
+          <td style="padding: 12px 8px; text-transform: capitalize;">${p.gender || 'Unisex'}</td>
+          <td style="padding: 12px 8px; font-weight: bold;">${ProductService.formatPrice(p.price)}</td>
+          <td style="padding: 12px 8px;">
+            <span class="badge ${p.inStock ? 'badge-best' : 'badge-sale'}">${p.inStock ? `${p.stock || 25} in stock` : 'Sold Out'}</span>
+          </td>
+          <td style="padding: 12px 8px; text-align: right;">
+            <a href="product.html?id=${p.id}" class="text-xs text-accent" style="margin-right: 8px; text-decoration: underline;">View</a>
+            <button class="text-xs text-muted" onclick="handleDeleteProduct('${p.id}')" style="background: none; border: none; cursor: pointer; color: var(--danger);">Delete</button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function openAddProductModal() {
+      const modal = document.getElementById('addProductModal');
+      if (modal) modal.classList.add('active');
+    }
+    window.openAddProductModal = openAddProductModal;
+
+    function closeAddProductModal() {
+      const modal = document.getElementById('addProductModal');
+      if (modal) modal.classList.remove('active');
+    }
+    window.closeAddProductModal = closeAddProductModal;
+
+    function handleAddProductSubmit(e) {
+      e.preventDefault();
+      const title = document.getElementById('newTitle').value.trim();
+      const category = document.getElementById('newCategory').value;
+      const price = parseFloat(document.getElementById('newPrice').value) || 95;
+      const gender = document.getElementById('newGender').value;
+      const stock = parseInt(document.getElementById('newStock').value, 10) || 20;
+      const desc = document.getElementById('newDesc').value.trim();
+
+      const newId = `ST${Math.floor(100 + Math.random() * 900)}`;
+      const newProduct = {
+        id: newId,
+        sku: newId,
+        title: title,
+        slug: title.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
+        brand: 'ShopTuch Atelier',
+        category: category,
+        subcategory: category,
+        gender: gender,
+        price: price,
+        comparePrice: price * 1.25,
+        rating: 5.0,
+        reviewsCount: 1,
+        inStock: true,
+        stock: stock,
+        featured: true,
+        newArrival: true,
+        bestseller: false,
+        trending: true,
+        images: ['assets/images/products/product-01.svg'],
+        sizes: ['XS', 'S', 'M', 'L', 'XL'],
+        colors: [{ name: 'Noir', hex: '#1C1917' }],
+        description: desc,
+        tags: [category.toLowerCase(), gender, 'luxury', 'new season']
+      };
+
+      ProductService.saveCustomProduct(newProduct);
+      App.showToast(`Product "${title}" added to catalog!`, 'success');
+      closeAddProductModal();
+      renderAdminTable();
+    }
+    window.handleAddProductSubmit = handleAddProductSubmit;
+
+    function handleDeleteProduct(id) {
+      if (confirm('Delete this product from your local catalog?')) {
+        ProductService.deleteProduct(id);
+        App.showToast('Product removed', 'info');
+        renderAdminTable();
+      }
+    }
+    window.handleDeleteProduct = handleDeleteProduct;
+
+    function handleResetCatalog() {
+      if (confirm('Reset custom products back to default factory atelier catalog?')) {
+        ProductService.resetCatalog();
+        App.showToast('Catalog reset to default 24 items', 'success');
+        renderAdminTable();
+      }
+    }
+    window.handleResetCatalog = handleResetCatalog;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderAdminTable();
+    });
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+      renderAdminTable();
+    }
+  </script>
+</body>
+</html>

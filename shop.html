@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shop All Collections — ShopTuch Modern Atelier</title>
+  <meta name="description" content="Explore our complete catalog of sustainable luxury fashion: heavyweight cotton hoodies, Italian wool coats, pure Mulberry silk dresses, selvedge denim and handcrafted accessories." />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/assets/images/logo/shoptuch-logo.svg" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/assets/css/style.css" />
+  <link rel="stylesheet" href="/assets/css/components.css" />
+  <link rel="stylesheet" href="/assets/css/responsive.css" />
+</head>
+<body>
+
+  <!-- ANNOUNCEMENT BAR -->
+  <!-- 1. TOP ANNOUNCEMENT BAR -->
+  <aside class="announcement-bar" aria-label="Special Offers">
+    <div class="announcement-bar-container">
+      <div class="announcement-text">
+        <span class="announcement-icon">🎁</span>
+        <span>Free Shipping on Orders Over $75</span>
+        <span class="announcement-bullet">•</span>
+        <span>Use Code: <strong class="announcement-highlight">WELCOME10</strong> for 10% OFF</span>
+        <span class="announcement-bullet">•</span>
+        <span>Hassle-Free 30-Day Returns</span>
+      </div>
+      <div class="announcement-actions">
+        <div class="currency-dropdown-btn" style="position: relative;">
+          <span id="currentCurrencyLabel">🇺🇸 USD ($)</span>
+          <span style="font-size: 0.6rem;">▾</span>
+          <select class="currency-selector currency-selector-native" id="currencySelector" aria-label="Select Currency">
+            <option value="USD">USD ($)</option>
+            <option value="EUR">EUR (€)</option>
+            <option value="GBP">GBP (£)</option>
+            <option value="CAD">CAD ($)</option>
+            <option value="AUD">AUD ($)</option>
+            <option value="JPY">JPY (¥)</option>
+          </select>
+        </div>
+        <button class="announcement-close" onclick="dismissAnnouncement()" aria-label="Dismiss Announcement">✕</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- 2. SITE HEADER -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-container">
+      
+      <!-- Left Group: Hamburger Menu + Brand Logo -->
+      <div class="header-left-group">
+        <button class="mobile-menu-btn" id="mobileMenuTrigger" aria-label="Open Navigation Menu">
+          <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+
+        <a href="index.html" class="brand-logo" aria-label="ShopTuch Home">
+          <span class="logo-part-shop">SHOP</span><span class="logo-part-tuch">TUCH</span>
+        </a>
+      </div>
+
+      <!-- Center Desktop Navigation Links -->
+      <nav class="nav-links" aria-label="Primary Navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="shop.html" class="nav-link active">Shop</a>
+        <a href="category.html?cat=women" class="nav-link">Women</a>
+        <a href="category.html?cat=men" class="nav-link">Men</a>
+        <a href="shop.html?sort=newest" class="nav-link">New Arrivals</a>
+        <a href="about.html" class="nav-link">Our Atelier</a>
+      </nav>
+
+      <!-- Right Header Action Controls -->
+      <div class="header-actions">
+        <button class="header-action-btn" id="searchTriggerBtn" onclick="SearchManager.open()" title="Search Products" aria-label="Search">
+          <svg width="21" height="21" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+          </svg>
+        </button>
+
+        <a href="wishlist.html" class="header-action-btn" title="Saved Wishlist" aria-label="View Wishlist">
+          <svg width="21" height="21" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+          </svg>
+          <span class="badge-count wishlist-badge-count" style="display: none;">0</span>
+        </a>
+
+        <button class="header-action-btn" id="accountTriggerBtn" onclick="openAccountModal()" title="Client Atelier Account" aria-label="Account Portal">
+          <svg width="21" height="21" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+          </svg>
+        </button>
+
+        <button class="header-action-btn" id="cartTriggerBtn" onclick="Cart.openDrawer()" title="Shopping Bag" aria-label="View Shopping Bag">
+          <svg width="21" height="21" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+          </svg>
+          <span class="badge-count cart-badge-count" style="display: none;">0</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- MAIN CATALOG CONTENT -->
+  <main id="mainContent" style="padding-top: 32px; padding-bottom: 80px;">
+    <div class="container">
+      
+      <!-- Breadcrumbs -->
+      <nav class="breadcrumb" aria-label="Breadcrumb" style="margin-bottom: 20px;">
+        <a href="index.html" class="breadcrumb-item">Home</a>
+        <span class="breadcrumb-separator">/</span>
+        <span class="breadcrumb-current">All Collections</span>
+      </nav>
+
+      <!-- Page Header -->
+      <div style="margin-bottom: 32px; border-bottom: 1px solid var(--border); padding-bottom: 24px;">
+        <span class="section-subtitle">THE COMPLETE ATELIER</span>
+        <h1 class="font-serif" style="font-size: 2.6rem; margin: 4px 0 12px 0;">All Garments & Essentials</h1>
+        <p class="text-sm text-muted" style="max-width: 680px;">
+          Crafted with architectural precision from natural Italian wools, organic Portuguese cottons, and French linens. Filter by department, size, or price below.
+        </p>
+
+        <!-- Quick Category Shortcuts -->
+        <div class="flex gap-2 flex-wrap" style="margin-top: 16px;">
+          <button class="btn btn-sm btn-secondary" onclick="FilterManager.setFilter('category', ''); FilterManager.setFilter('gender', '');">All (24+)</button>
+          <button class="btn btn-sm btn-secondary" onclick="FilterManager.setFilter('category', ''); FilterManager.setFilter('gender', 'women');">Women</button>
+          <button class="btn btn-sm btn-secondary" onclick="FilterManager.setFilter('category', ''); FilterManager.setFilter('gender', 'men');">Men</button>
+          <button class="btn btn-sm btn-secondary" onclick="FilterManager.setFilter('category', 'outerwear');">Outerwear</button>
+          <button class="btn btn-sm btn-secondary" onclick="FilterManager.setFilter('category', 'hoodies');">Hoodies</button>
+          <button class="btn btn-sm btn-secondary" onclick="FilterManager.setFilter('category', 'dresses');">Dresses</button>
+          <button class="btn btn-sm btn-secondary" onclick="FilterManager.setFilter('category', 'shoes');">Shoes</button>
+          <button class="btn btn-sm btn-secondary" onclick="FilterManager.setFilter('category', 'accessories');">Accessories</button>
+        </div>
+
+        <!-- Promotional Banner Highlights -->
+        <div class="promo-dual-grid" style="margin-top: 24px;">
+          <div class="promo-dual-card" style="min-height: 200px; padding: 20px;">
+            <img src="assets/images/banners/banner_bff_deal.jpg" alt="BFF Special Deal" class="promo-card-bg" referrerPolicy="no-referrer" />
+            <div class="promo-card-overlay"></div>
+            <div class="promo-card-body">
+              <span class="promo-tag" style="margin-bottom: 6px;">BOGO 50% OFF</span>
+              <h4 class="promo-title" style="font-size: 1.3rem; margin-bottom: 4px;">Forever BFF Special Deal</h4>
+              <p class="promo-desc" style="font-size: 0.8rem; margin-bottom: 10px;">Buy 1 get 1 free on select items with code <strong>BFFBOGO</strong>.</p>
+              <button type="button" class="btn btn-white btn-sm" onclick="copyPromoCode('BFFBOGO')">Copy Code: BFFBOGO</button>
+            </div>
+          </div>
+          <div class="promo-dual-card" style="min-height: 200px; padding: 20px;">
+            <img src="assets/images/banners/banner_winter_ready.jpg" alt="Winter Ready - Free Ship Today" class="promo-card-bg" referrerPolicy="no-referrer" />
+            <div class="promo-card-overlay"></div>
+            <div class="promo-card-body">
+              <span class="promo-tag" style="margin-bottom: 6px;">FREE SHIPPING TODAY</span>
+              <h4 class="promo-title" style="font-size: 1.3rem; margin-bottom: 4px;">Winter Ready from $49*</h4>
+              <p class="promo-desc" style="font-size: 0.8rem; margin-bottom: 10px;">Plush faux fur coats & winter essentials with code <strong>ELLASHIP</strong>.</p>
+              <button type="button" class="btn btn-white btn-sm" onclick="copyPromoCode('ELLASHIP')">Copy Code: ELLASHIP</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Controls Bar: Product Count, Mobile Filter Trigger, Sort, View Modes -->
+      <div class="flex items-center justify-between flex-wrap gap-4" style="margin-bottom: 24px;">
+        <div class="flex items-center gap-3">
+          <button class="btn btn-secondary btn-sm md:hidden" id="mobileFilterTrigger">
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/></svg>
+            Filters
+          </button>
+          <span class="text-sm font-semibold" id="shopProductCount">Loading products...</span>
+        </div>
+
+        <div class="flex items-center gap-3 flex-wrap">
+          <div class="flex items-center gap-2">
+            <label for="catalogSortSelect" class="text-xs uppercase text-muted font-bold">Sort By:</label>
+            <select class="form-select" id="catalogSortSelect" style="width: auto; padding: 6px 12px; font-size: 0.85rem;">
+              <option value="featured">Featured Curations</option>
+              <option value="newest">Newest Arrivals</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+              <option value="rating">Highest Rated</option>
+              <option value="bestseller">Best Sellers</option>
+            </select>
+          </div>
+
+          <div class="view-mode-buttons flex gap-1">
+            <button class="btn btn-sm btn-secondary active" data-view-mode="grid-4" title="4-Column Grid">☷</button>
+            <button class="btn btn-sm btn-secondary" data-view-mode="grid-3" title="3-Column Grid">☶</button>
+            <button class="btn btn-sm btn-secondary" data-view-mode="list" title="List View">☰</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Active Filter Chips Area -->
+      <div id="activeFilterChips"></div>
+
+      <!-- Catalog Main Layout: Sidebar + Product Grid -->
+      <div class="grid grid-sidebar gap-8" style="align-items: start;">
+        
+        <!-- Desktop Sidebar Filters -->
+        <aside class="catalog-sidebar" id="shopSidebarFilters" style="background: var(--surface); padding: 24px; border-radius: var(--radius-sm); border: 1px solid var(--border);">
+          <!-- Populated by FilterManager.generateFilterHTML() -->
+        </aside>
+
+        <!-- Product Grid Content -->
+        <section aria-label="Product Catalog">
+          <div class="product-grid grid-4" id="shopProductGrid">
+            <!-- Populated by FilterManager.render() -->
+          </div>
+
+          <div id="loadMoreContainer" class="text-center" style="margin-top: 48px; display: none;"></div>
+        </section>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="grid grid-4 gap-8 footer-main" style="padding-bottom: 48px; border-bottom: 1px solid var(--border);">
+        <div>
+          <div class="flex items-center gap-2" style="margin-bottom: 16px;">
+            <img src="/assets/images/logo/shoptuch-logo.svg" alt="ShopTuch Logo" width="28" height="28" />
+            <span class="brand-name font-bold tracking-wider">SHOPTUCH</span>
+          </div>
+          <p class="text-sm text-muted" style="line-height: 1.7;">Independent modern luxury atelier delivering sustainable garments worldwide.</p>
+        </div>
+        <div>
+          <h4 class="footer-title">Departments</h4>
+          <ul class="footer-links">
+            <li><a href="category.html?cat=women">Women's Collection</a></li>
+            <li><a href="category.html?cat=men">Men's Tailoring</a></li>
+            <li><a href="category.html?cat=outerwear">Outerwear & Coats</a></li>
+            <li><a href="shop.html?sort=newest">New Season</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-title">Client Care</h4>
+          <ul class="footer-links">
+            <li><a href="shipping-policy.html">Global Delivery</a></li>
+            <li><a href="return-policy.html">Returns & Exchanges</a></li>
+            <li><a href="faq.html">FAQs</a></li>
+            <li><a href="contact.html">Support</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-title">The Maison</h4>
+          <ul class="footer-links">
+            <li><a href="about.html">Sustainability</a></li>
+            <li><a href="privacy-policy.html">Privacy</a></li>
+            <li><a href="terms.html">Terms</a></li>
+            <li><a href="admin-demo.html">Admin Inventory Demo</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="flex items-center justify-between flex-wrap gap-4" style="padding-top: 32px;">
+        <span class="text-xs text-muted">© 2026 ShopTuch Atelier Inc. All rights reserved.</span>
+        <span class="text-xs text-muted font-mono">100% ENCRYPTED CHECKOUT</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MOBILE FILTER DRAWER -->
+  <div class="drawer-backdrop" id="filterDrawerBackdrop"></div>
+  <aside class="cart-drawer" id="filterDrawer" aria-label="Filters">
+    <div class="cart-drawer-header">
+      <h3 class="font-serif" style="font-size: 1.35rem; margin: 0;">Refine Products</h3>
+      <button class="drawer-close-btn" id="mobileFilterClose" aria-label="Close Filters">✕</button>
+    </div>
+    <div class="cart-drawer-body" id="mobileDrawerFilterContent" style="padding: 20px;">
+      <!-- Populated by FilterManager -->
+    </div>
+  </aside>
+
+  <!-- SEARCH MODAL -->
+  <div class="search-modal-backdrop" id="searchModal">
+    <div class="search-modal-container">
+      <div class="flex items-center justify-between" style="margin-bottom: 20px;">
+        <span class="text-xs tracking-widest uppercase font-bold text-muted">Search Atelier</span>
+        <button class="modal-close-btn" id="searchCloseBtn">✕</button>
+      </div>
+      <div class="search-input-wrapper">
+        <input type="text" id="searchInputField" class="search-input-field" placeholder="Search by garment, fabric, color, or category..." autocomplete="off" />
+      </div>
+      <div id="searchResultsArea" style="max-height: 420px; overflow-y: auto;"></div>
+    </div>
+  </div>
+
+  <!-- CART DRAWER -->
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping Bag">
+    <div class="cart-drawer-header">
+      <h3 class="font-serif" style="font-size: 1.35rem; margin: 0;">Shopping Bag</h3>
+      <button class="drawer-close-btn" onclick="Cart.closeDrawer()">✕</button>
+    </div>
+    <div class="drawer-shipping-tracker" id="drawerShippingProgress"></div>
+    <div class="cart-drawer-body" id="cartDrawerBody"></div>
+    <div class="cart-drawer-footer" id="cartDrawerFooter"></div>
+  </aside>
+
+  <!-- MOBILE NAV DRAWER -->
+  <aside class="mobile-nav-drawer" id="mobileNavDrawer" aria-label="Mobile Navigation">
+    <div class="flex items-center justify-between" style="padding: 20px; border-bottom: 1px solid var(--border);">
+      <span class="brand-name">SHOPTUCH</span>
+      <button class="drawer-close-btn" id="mobileMenuClose">✕</button>
+    </div>
+    <div class="mobile-nav-links">
+      <a href="index.html" class="mobile-nav-link">Home</a>
+      <a href="shop.html" class="mobile-nav-link active">Shop All</a>
+      <a href="category.html?cat=women" class="mobile-nav-link">Women</a>
+      <a href="category.html?cat=men" class="mobile-nav-link">Men</a>
+      <a href="wishlist.html" class="mobile-nav-link">Wishlist</a>
+      <a href="cart.html" class="mobile-nav-link">Bag</a>
+      <a href="about.html" class="mobile-nav-link">Our Atelier</a>
+    </div>
+  </aside>
+
+  <!-- QUICK VIEW MODAL -->
+  <div class="modal-backdrop" id="quickViewModal">
+    <div class="modal-card" style="max-width: 740px;">
+      <button class="modal-close-btn" onclick="closeQuickView()">✕</button>
+      <div id="quickViewModalBody"></div>
+    </div>
+  </div>
+
+  <!-- SIZE GUIDE MODAL -->
+  <div class="modal-backdrop" id="sizeGuideModal">
+    <div class="modal-card" style="max-width: 680px;">
+      <button class="modal-close-btn" onclick="closeSizeGuideModal()">✕</button>
+      <h3 class="font-serif" style="font-size: 1.6rem; margin-bottom: 8px;">Size & Fit Guide</h3>
+      <p class="text-sm text-muted" style="margin-bottom: 20px;">All measurements in inches / centimeters.</p>
+      <button class="btn btn-secondary btn-sm" onclick="closeSizeGuideModal()">Close</button>
+    </div>
+  </div>
+
+  <!-- USER ACCOUNT & ATELIER PORTAL MODAL -->
+  <div class="modal-backdrop" id="accountModal">
+    <div class="modal-card" style="max-width: 480px; padding: 32px 28px;">
+      <button class="modal-close-btn" onclick="closeAccountModal()" aria-label="Close">✕</button>
+      <div class="text-center" style="margin-bottom: 22px;">
+        <div class="brand-logo" style="margin-bottom: 8px; justify-content: center;">
+          <span class="logo-part-shop">SHOP</span><span class="logo-part-tuch">TUCH</span>
+        </div>
+        <h3 class="font-serif" style="font-size: 1.45rem; margin-bottom: 4px;">Atelier Client Portal</h3>
+        <p class="text-xs text-muted">Access your personalized wardrobe, saved wishlist &amp; express orders.</p>
+      </div>
+
+      <div style="display: flex; align-items: center; justify-content: center; gap: 8px; border-bottom: 1px solid var(--border); margin-bottom: 20px;">
+        <button class="account-tab-btn active" id="tabSigninBtn" onclick="switchAccountTab('signin')">Sign In</button>
+        <button class="account-tab-btn" id="tabRegisterBtn" onclick="switchAccountTab('register')">Create Account</button>
+        <button class="account-tab-btn" id="tabOrdersBtn" onclick="switchAccountTab('orders')">Track Order</button>
+      </div>
+
+      <div id="accountSigninView">
+        <form onsubmit="handleAccountLogin(event)" style="display: flex; flex-direction: column; gap: 14px;">
+          <div>
+            <label class="form-label" style="font-size: 0.72rem; text-transform: uppercase; font-weight: 700; display: block; margin-bottom: 4px;">Email Address</label>
+            <input type="email" class="form-input" id="loginEmail" placeholder="patron@shoptuch.com" value="patron@shoptuch.com" required />
+          </div>
+          <div>
+            <label class="form-label" style="font-size: 0.72rem; text-transform: uppercase; font-weight: 700; display: block; margin-bottom: 4px;">Password</label>
+            <input type="password" class="form-input" id="loginPassword" placeholder="••••••••" value="password123" required />
+          </div>
+          <div style="display: flex; align-items: center; justify-content: space-between; font-size: 0.75rem;">
+            <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;">
+              <input type="checkbox" checked /> Remember session
+            </label>
+            <a href="#" style="color: var(--text-muted);" onclick="showToast('Password reset link sent to your email!', 'info'); return false;">Forgot password?</a>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block" style="margin-top: 6px; padding: 12px;">Sign In to Maison</button>
+          <button type="button" class="btn btn-secondary btn-block" onclick="handleDemoLogin()" style="padding: 10px; font-size: 0.8rem;">⚡ 1-Click Demo VIP Access</button>
+        </form>
+      </div>
+
+      <div id="accountRegisterView" style="display: none;">
+        <form onsubmit="handleAccountRegister(event)" style="display: flex; flex-direction: column; gap: 14px;">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+            <div>
+              <label class="form-label" style="font-size: 0.72rem; text-transform: uppercase; font-weight: 700; display: block; margin-bottom: 4px;">First Name</label>
+              <input type="text" class="form-input" placeholder="Eleanor" required />
+            </div>
+            <div>
+              <label class="form-label" style="font-size: 0.72rem; text-transform: uppercase; font-weight: 700; display: block; margin-bottom: 4px;">Last Name</label>
+              <input type="text" class="form-input" placeholder="Vance" required />
+            </div>
+          </div>
+          <div>
+            <label class="form-label" style="font-size: 0.72rem; text-transform: uppercase; font-weight: 700; display: block; margin-bottom: 4px;">Email Address</label>
+            <input type="email" class="form-input" placeholder="eleanor@example.com" required />
+          </div>
+          <div>
+            <label class="form-label" style="font-size: 0.72rem; text-transform: uppercase; font-weight: 700; display: block; margin-bottom: 4px;">Create Password</label>
+            <input type="password" class="form-input" placeholder="••••••••" required />
+          </div>
+          <button type="submit" class="btn btn-primary btn-block" style="margin-top: 6px; padding: 12px;">Join Atelier Privileges</button>
+        </form>
+      </div>
+
+      <div id="accountOrdersView" style="display: none;">
+        <form onsubmit="handleTrackOrder(event)" style="display: flex; flex-direction: column; gap: 14px;">
+          <div>
+            <label class="form-label" style="font-size: 0.72rem; text-transform: uppercase; font-weight: 700; display: block; margin-bottom: 4px;">Order Tracking Number</label>
+            <input type="text" class="form-input" id="trackOrderNumber" placeholder="ST-84920" required />
+          </div>
+          <div>
+            <label class="form-label" style="font-size: 0.72rem; text-transform: uppercase; font-weight: 700; display: block; margin-bottom: 4px;">Billing Email</label>
+            <input type="email" class="form-input" id="trackOrderEmail" placeholder="your@email.com" required />
+          </div>
+          <button type="submit" class="btn btn-primary btn-block" style="padding: 12px;">Track Shipment</button>
+          <div id="trackResultBox" style="display: none; padding: 14px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-xs); font-size: 0.85rem;">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST CONTAINER -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- SCRIPTS -->
+  <script type="module" src="/assets/js/products.js"></script>
+  <script type="module" src="/assets/js/cart.js"></script>
+  <script type="module" src="/assets/js/wishlist.js"></script>
+  <script type="module" src="/assets/js/search.js"></script>
+  <script type="module" src="/assets/js/filters.js"></script>
+  <script type="module" src="/assets/js/app.js"></script>
+
+  <script type="module">
+    document.addEventListener('DOMContentLoaded', () => {
+      if (typeof FilterManager !== 'undefined') {
+        FilterManager.init();
+      }
+    });
+
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+      if (typeof FilterManager !== 'undefined') {
+        FilterManager.init();
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shipping & Global Delivery — ShopTuch</title>
+  <meta name="description" content="ShopTuch global delivery terms, complimentary thresholds, express courier services, and international customs clearance." />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/assets/images/logo/shoptuch-logo.svg" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/assets/css/style.css" />
+  <link rel="stylesheet" href="/assets/css/components.css" />
+  <link rel="stylesheet" href="/assets/css/responsive.css" />
+</head>
+<body>
+
+  <!-- ANNOUNCEMENT BAR -->
+  <aside class="announcement-bar" aria-label="Special Offers">
+    <div class="container announcement-bar-container">
+      <div class="announcement-text">
+        <span>Complimentary Express Courier on orders over $75</span>
+        <span class="announcement-bullet">•</span>
+        <span>Use code <strong>WELCOME10</strong> for 10% off</span>
+      </div>
+      <div class="announcement-actions">
+        <select class="currency-selector" id="currencySelector" aria-label="Select Currency">
+          <option value="USD">USD ($)</option>
+          <option value="EUR">EUR (€)</option>
+          <option value="GBP">GBP (£)</option>
+          <option value="CAD">CAD ($)</option>
+          <option value="AUD">AUD ($)</option>
+          <option value="JPY">JPY (¥)</option>
+        </select>
+      </div>
+    </div>
+  </aside>
+
+  <!-- HEADER -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-container">
+      <button class="mobile-menu-btn" id="mobileMenuTrigger" aria-label="Open Menu">
+        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+
+      <a href="index.html" class="brand-logo" aria-label="ShopTuch Home">
+        <img src="/assets/images/logo/shoptuch-logo.svg" alt="ShopTuch Logo" width="34" height="34" />
+        <span class="brand-name">SHOPTUCH</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Primary Navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="shop.html" class="nav-link">Shop All</a>
+        <a href="category.html?cat=women" class="nav-link">Women</a>
+        <a href="category.html?cat=men" class="nav-link">Men</a>
+        <a href="shop.html?sort=newest" class="nav-link">New Arrivals</a>
+        <a href="about.html" class="nav-link">Our Atelier</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="header-action-btn" id="searchTriggerBtn" onclick="SearchManager.open()" title="Search">
+          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+        </button>
+        <button class="header-action-btn theme-toggle-btn" title="Toggle Theme" aria-label="Toggle dark/light mode">
+          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+        </button>
+        <a href="wishlist.html" class="header-action-btn" title="Wishlist">
+          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+          <span class="badge-count wishlist-badge-count" style="display: none;">0</span>
+        </a>
+        <button class="header-action-btn" id="cartTriggerBtn" onclick="Cart.openDrawer()" title="Bag">
+          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+          <span class="badge-count cart-badge-count" style="display: none;">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN SHIPPING CONTENT -->
+  <main id="mainContent" style="padding-top: 48px; padding-bottom: 80px;">
+    <div class="container" style="max-width: 840px;">
+
+      <div class="text-center" style="margin-bottom: 40px;">
+        <span class="section-subtitle">GLOBAL LOGISTICS</span>
+        <h1 class="font-serif" style="font-size: 2.8rem; margin: 6px 0 12px 0;">Shipping & Delivery Terms</h1>
+        <p class="text-sm text-muted">Complimentary express shipping on qualifying orders worldwide.</p>
+      </div>
+
+      <div style="background: var(--surface); padding: 32px; border-radius: var(--radius-sm); border: 1px solid var(--border); line-height: 1.8; font-size: 0.95rem;">
+        <h3 class="font-serif" style="font-size: 1.4rem; margin-bottom: 12px;">1. Shipping Rates & Timelines</h3>
+        <p class="text-muted" style="margin-bottom: 20px;">
+          All ShopTuch garments are hand-inspected, wrapped in recycled FSC tissue, and dispatched via insured courier.
+        </p>
+        
+        <table class="table" style="width: 100%; margin-bottom: 24px; font-size: 0.85rem;">
+          <thead>
+            <tr style="border-bottom: 2px solid var(--border);">
+              <th style="padding: 10px;">Service</th>
+              <th style="padding: 10px;">Estimated Delivery</th>
+              <th style="padding: 10px;">Cost</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding: 10px; font-weight: 600;">Standard Atelier Courier</td>
+              <td style="padding: 10px;">3–5 Business Days</td>
+              <td style="padding: 10px;">Free over $75 / $9.95 under</td>
+            </tr>
+            <tr>
+              <td style="padding: 10px; font-weight: 600;">Priority Express Air</td>
+              <td style="padding: 10px;">1–2 Business Days</td>
+              <td style="padding: 10px;">$15.00 flat rate</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3 class="font-serif" style="font-size: 1.4rem; margin-bottom: 12px;">2. Order Tracking</h3>
+        <p class="text-muted" style="margin-bottom: 20px;">
+          Once your order has been dispatched from our central atelier, you will receive an automatic email and SMS containing your live carrier tracking number and estimated delivery window.
+        </p>
+
+        <h3 class="font-serif" style="font-size: 1.4rem; margin-bottom: 12px;">3. International Customs & Duties</h3>
+        <p class="text-muted">
+          All duties and import taxes are calculated and collected directly at checkout for seamless doorstep delivery with no unexpected customs fees.
+        </p>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="grid grid-4 gap-8 footer-main" style="padding-bottom: 48px; border-bottom: 1px solid var(--border);">
+        <div>
+          <div class="flex items-center gap-2" style="margin-bottom: 16px;">
+            <img src="/assets/images/logo/shoptuch-logo.svg" alt="ShopTuch Logo" width="28" height="28" />
+            <span class="brand-name font-bold tracking-wider">SHOPTUCH</span>
+          </div>
+          <p class="text-sm text-muted">Architectural tailoring and sustainable luxury fabrics.</p>
+        </div>
+        <div>
+          <h4 class="footer-title">Departments</h4>
+          <ul class="footer-links">
+            <li><a href="category.html?cat=women">Women's Collection</a></li>
+            <li><a href="category.html?cat=men">Men's Tailoring</a></li>
+            <li><a href="category.html?cat=outerwear">Outerwear & Coats</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-title">Client Care</h4>
+          <ul class="footer-links">
+            <li><a href="shipping-policy.html">Shipping Policy</a></li>
+            <li><a href="return-policy.html">30-Day Returns</a></li>
+            <li><a href="faq.html">FAQs</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-title">The Maison</h4>
+          <ul class="footer-links">
+            <li><a href="about.html">About Atelier</a></li>
+            <li><a href="privacy-policy.html">Privacy</a></li>
+            <li><a href="terms.html">Terms</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="flex items-center justify-between flex-wrap gap-4" style="padding-top: 32px;">
+        <span class="text-xs text-muted">© 2026 ShopTuch Atelier Inc.</span>
+        <span class="text-xs text-muted font-mono">100% ENCRYPTED CHECKOUT</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SEARCH MODAL -->
+  <div class="search-modal-backdrop" id="searchModal">
+    <div class="search-modal-container">
+      <div class="flex items-center justify-between" style="margin-bottom: 20px;">
+        <span class="text-xs tracking-widest uppercase font-bold text-muted">Search Atelier</span>
+        <button class="modal-close-btn" id="searchCloseBtn">✕</button>
+      </div>
+      <div class="search-input-wrapper">
+        <input type="text" id="searchInputField" class="search-input-field" placeholder="Search by garment, fabric, color, or category..." autocomplete="off" />
+      </div>
+      <div id="searchResultsArea" style="max-height: 420px; overflow-y: auto;"></div>
+    </div>
+  </div>
+
+  <!-- CART DRAWER -->
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping Bag">
+    <div class="cart-drawer-header">
+      <h3 class="font-serif" style="font-size: 1.35rem; margin: 0;">Shopping Bag</h3>
+      <button class="drawer-close-btn" onclick="Cart.closeDrawer()">✕</button>
+    </div>
+    <div class="drawer-shipping-tracker" id="drawerShippingProgress"></div>
+    <div class="cart-drawer-body" id="cartDrawerBody"></div>
+    <div class="cart-drawer-footer" id="cartDrawerFooter"></div>
+  </aside>
+
+  <!-- MOBILE NAV DRAWER -->
+  <aside class="mobile-nav-drawer" id="mobileNavDrawer" aria-label="Mobile Navigation">
+    <div class="flex items-center justify-between" style="padding: 20px; border-bottom: 1px solid var(--border);">
+      <span class="brand-name">SHOPTUCH</span>
+      <button class="drawer-close-btn" id="mobileMenuClose">✕</button>
+    </div>
+    <div class="mobile-nav-links">
+      <a href="index.html" class="mobile-nav-link">Home</a>
+      <a href="shop.html" class="mobile-nav-link">Shop All</a>
+      <a href="category.html?cat=women" class="mobile-nav-link">Women</a>
+      <a href="category.html?cat=men" class="mobile-nav-link">Men</a>
+      <a href="wishlist.html" class="mobile-nav-link">Wishlist</a>
+      <a href="cart.html" class="mobile-nav-link">Bag</a>
+    </div>
+  </aside>
+
+  <!-- TOAST CONTAINER -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- SCRIPTS -->
+  <script type="module" src="/assets/js/products.js"></script>
+  <script type="module" src="/assets/js/cart.js"></script>
+  <script type="module" src="/assets/js/wishlist.js"></script>
+  <script type="module" src="/assets/js/search.js"></script>
+  <script type="module" src="/assets/js/filters.js"></script>
+  <script type="module" src="/assets/js/app.js"></script>
+</body>
+</html>
