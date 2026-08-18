@@ -1,0 +1,6 @@
+{
+  "name": "ShopTuch",
+  "description": "Premium clothing e-commerce website with modern fashion design, catalog, shopping cart, wishlist, live search, filters, quick view, and responsive mobile-first UX.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
