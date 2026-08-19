@@ -186,58 +186,149 @@
   <!-- MAIN HOMEPAGE CONTENT -->
   <main id="mainContent">
 
-    <!-- 3. HERO BANNER SLIDER (USES BOTH BANNER IMAGES) -->
-    <section class="hero-slider-section" id="heroBannerSlider" aria-label="Featured Campaigns Carousel">
-      <div class="hero-slider-track">
-        
-        <!-- Slide 1: Winter Ready Collection (Matching reference image) -->
-        <div class="hero-slide active" aria-hidden="false" id="heroSlide1">
-    <img src="/assets/images/banners/hero-banner1.png" alt="ShopTuch Fashion Banner">
-</div>
-          <div class="container hero-slide-content">
-            <span class="hero-slide-badge">
-              <span class="badge-icon-tag">❄️</span> WINTER COLLECTION 2025
-            </span>
-            <h1 class="hero-slide-title">Cozy In Style From $49*</h1>
-            <p class="hero-slide-description">
-              Discover plush faux fur coats, cozy knitted layerings, and retro-chic cold weather statement pieces.
-            </p>
-            <div class="hero-slide-coupon-pill" onclick="copyPromoCode('ELLASHIP')" title="Click to copy coupon code">
-              <span>🎟️ Coupon: <strong>ELLASHIP</strong></span>
-              <span class="text-xs text-muted font-normal">• Click to Copy &amp; Apply</span>
-            </div>
-            <div class="hero-cta-group hero-slide-cta-group">
-              <a href="category.html?cat=outerwear" class="btn btn-primary btn-lg">Shop Winter Ready</a>
-              <a href="shop.html" class="btn btn-outline-white btn-lg">Explore Catalog</a>
-            </div>
-          </div>
+<!-- =========================================================
+     SHOPTUCH — HERO BANNER SLIDER
+     3 IMAGE-ONLY BANNERS
+========================================================= -->
+
+<section
+    class="hero-slider-section"
+    id="heroBannerSlider"
+    aria-label="Featured Campaigns Carousel"
+>
+
+    <div class="hero-slider-track">
+
+        <!-- =========================
+             BANNER 1
+        ========================== -->
+        <div
+            class="hero-slide active"
+            aria-hidden="false"
+            id="heroSlide1"
+        >
+            <img
+                src="/assets/images/banners/hero-banner1.png"
+                alt="ShopTuch Banner 1"
+            >
         </div>
 
-        <!-- Slide 2: Forever BFF Special Deal (BOGO) -->
-        <div class="hero-slide" aria-hidden="true" id="heroSlide2">
-          <img src="assets/images/banners/banner_bff_deal.jpg" alt="Forever BFF Special Deal - Buy One Get One Free" class="hero-slide-bg" referrerPolicy="no-referrer" />
-          <div class="hero-slide-overlay"></div>
-          <div class="container hero-slide-content">
-            <span class="hero-slide-badge">
-              <span class="badge-icon-tag">★</span> SPECIAL CAMPAIGN • BUY 1 &amp; GET 1 FREE
-            </span>
-            <h1 class="hero-slide-title">Forever BFF Special Deal</h1>
-            <p class="hero-slide-description">
-              Celebrate friendship with vibrant summer essentials, designer eyewear, and matching chic wardrobe pieces. Buy one garment and get one free.
-            </p>
-            <div class="hero-slide-coupon-pill" onclick="copyPromoCode('BFFBOGO')" title="Click to copy coupon code">
-              <span>🎟️ Coupon: <strong>BFFBOGO</strong></span>
-              <span class="text-xs text-muted font-normal">• Click to Copy &amp; Apply</span>
-            </div>
-            <div class="hero-cta-group hero-slide-cta-group">
-              <a href="shop.html" class="btn btn-primary btn-lg">Shop BOGO Deal</a>
-              <a href="shop.html?sort=newest" class="btn btn-outline-white btn-lg">Explore Catalog</a>
-            </div>
-          </div>
+
+        <!-- =========================
+             BANNER 2
+        ========================== -->
+        <div
+            class="hero-slide"
+            aria-hidden="true"
+            id="heroSlide2"
+        >
+            <img
+                src="/assets/images/banners/hero-banner2.png"
+                alt="ShopTuch Banner 2"
+            >
         </div>
 
-      </div>
 
+        <!-- =========================
+             BANNER 3
+        ========================== -->
+        <div
+            class="hero-slide"
+            aria-hidden="true"
+            id="heroSlide3"
+        >
+            <img
+                src="/assets/images/banners/hero-banner3.png"
+                alt="ShopTuch Banner 3"
+            >
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         PREVIOUS BUTTON
+    ========================== -->
+    <button
+        class="hero-nav-arrow prev"
+        type="button"
+        aria-label="Previous Slide"
+    >
+        <svg
+            width="22"
+            height="22"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+        >
+            <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2.5"
+                d="M15 18l-6-6 6-6"
+            />
+        </svg>
+    </button>
+
+
+    <!-- =========================
+         NEXT BUTTON
+    ========================== -->
+    <button
+        class="hero-nav-arrow next"
+        type="button"
+        aria-label="Next Slide"
+    >
+        <svg
+            width="22"
+            height="22"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+        >
+            <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2.5"
+                d="M9 18l6-6-6-6"
+            />
+        </svg>
+    </button>
+
+
+    <!-- =========================
+         SLIDER DOTS
+    ========================== -->
+    <div
+        class="hero-slider-pagination"
+        aria-label="Slide Selector"
+    >
+        <button
+            class="hero-slider-dot active"
+            type="button"
+            data-slide-to="0"
+            aria-label="Go to Slide 1"
+            aria-current="true"
+        ></button>
+
+        <button
+            class="hero-slider-dot"
+            type="button"
+            data-slide-to="1"
+            aria-label="Go to Slide 2"
+        ></button>
+
+        <button
+            class="hero-slider-dot"
+            type="button"
+            data-slide-to="2"
+            aria-label="Go to Slide 3"
+        ></button>
+    </div>
+
+</section>
       <!-- Navigation Arrows -->
       <button class="hero-nav-arrow prev" aria-label="Previous Slide">
         <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24">
